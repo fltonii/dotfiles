@@ -1,0 +1,15 @@
+DIR="$(dirname "$(which "$0")")"
+
+export ZSH="/home/fltonii/.oh-my-zsh"
+
+ZSH_THEME="agnoster"
+plugins=(git python pylint extract vagrant archlinux)
+
+source $ZSH/oh-my-zsh.sh
+
+# config aliases
+$DIR/aliases.sh
+
+PATH=$PATH:$(yarn global bin)
+
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
