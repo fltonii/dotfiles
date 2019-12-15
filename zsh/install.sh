@@ -15,7 +15,7 @@ install_oh_my_zsh() {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   # install powerline
   if pip --version > /dev/null ; then
-    pip install powerline-status
+    sudo pip install powerline-status
   else
     python "$(curl -fsSL https://bootstrap.pypa.io/get-pip.py)"
     install_oh_my_zsh
