@@ -34,3 +34,5 @@ main() {
   install_powerline_support
   install_oh_my_zsh
 }
+
+main
