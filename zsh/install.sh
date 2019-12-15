@@ -21,7 +21,7 @@ install_powerline_support() {
   else
     {
       wget -qO- https://bootstrap.pypa.io/get-pip.py | sudo python -
-      install_oh_my_zsh
+      install_powerline_support
     } || {
       return
     }
