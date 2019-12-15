@@ -12,20 +12,25 @@ install_zsh() {
 }
 
 install_oh_my_zsh() {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  curl https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash -s -- --skip-chsh
 }
 
 install_powerline_support() {
   if pip --version > /dev/null ; then
     sudo pip install powerline-status
   else
-    python "$(curl -fsSL https://bootstrap.pypa.io/get-pip.py)"
-    install_oh_my_zsh
+    {
+      wget -qO- https://bootstrap.pypa.io/get-pip.py | sudo python -
+      install_oh_my_zsh
+    } || {
+      return
+    }
   fi
 }
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlight
-
-install_zsh
-install_powerline_support
-install_oh_my_zsh
+main() {
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlight
+  install_zsh
+  install_powerline_support
+  install_oh_my_zsh
+}
